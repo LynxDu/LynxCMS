@@ -1,0 +1,4 @@
+﻿1. ПриПередвиженииИзменитьПуть.png (и еще в 5+ местах...) надо переписать движ....
+
+//исправил/2. подключение к БД Project\Admin\Config\database.php  Project\Engine\Core\Database\config.php
+					
