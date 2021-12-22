@@ -80,9 +80,9 @@ function selectPlaginList()
                                 ?>
                         </td>
                         <td><textarea name="dform_oth_details_descr[]" class="form-control" rows="3" placeholder="Имя файла"><?= $list['file_name']?></textarea></td>
-                        <td><textarea name="dform_oth_details_descr[]" class="form-control" rows="3" placeholder="Описание плагина"><?= $list['path']?></textarea></td>
+                        <td><textarea name="dform_oth_details_descr[]" class="form-control" rows="3" placeholder="Описание плагина"><?= $list['description']?></textarea></td>
                         <td style="vertical-align:middle;text-align:right;">
-                            <input type="checkbox" name="<?= $list['id']?>">
+                            <input class="form-check-input" type="checkbox" name="<?= $list['id']?>">
                         </td>
                     </tr>
                     <?php endforeach; ?>

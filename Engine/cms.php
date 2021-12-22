@@ -64,7 +64,6 @@ class cms
 
             $plaginView= $db->query($sql, $queryBuilder->values);
 
-
             $pathDir = 'C:\xampp\htdocs\LynxCMS\Admin\Controller/../view/plagin/file/';
 
             $dirFile = array_filter(scandir($pathDir), function($item) {
@@ -72,33 +71,50 @@ class cms
             });
 
 
-
+            if (!empty($dirFile)){
             foreach ($plaginView as $view):
 
                 foreach ($dirFile as $dir):
                 if ($dir == $view['file_name']) {
 
-                    $pathFile = $view['path'].$view['file_name'];
-                    require_once $pathFile;
+                    require_once $view['path'];
 
                 } else{
 
                     $sql = $queryBuilder
                         ->update('plagin')
-                        ->set($view['active'])
+                        ->set([$view['active'] => 'disabled'])
                         ->where('id', $view['id'])
                         ->sql();
 
                     print_r($sql);
-                    echo 11;
+                    print_r($queryBuilder->values);
 
-                    //$db->execute($sql, $queryBuilder->values);
+                    $db->execute($sql, $queryBuilder->values);
 
                 }
                 endforeach;
 
-
             endforeach;
+            } else {
+
+                foreach ($plaginView as $view):
+
+                    if ($view['active'] !== 'not found') {
+
+                    $sql = $queryBuilder
+                        ->update('plagin')
+                        ->set(['active' => 'not found'])
+                        ->where('id', $view['id'])
+                        ->sql();
+
+                    $db->execute($sql, $queryBuilder->values);
+                    }
+
+                endforeach;
+
+
+            }
 
         }catch (\Exception $e){
 

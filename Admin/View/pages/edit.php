@@ -39,7 +39,21 @@ $this->theme->header(); ?>
                         <div class="form-group">
                             <label for="formContent">Content</label>
 <!--                            <input type="text" name="content" class="form-control" id="formContent" placeholder="">-->
-                            <textarea name="content" class="form-control" id="formContent"><?= $one[0]['content']; ?></textarea>
+                            <!-- Include Editor style. -->
+                            <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+
+                            <!-- Create a tag that we will use as the editable area. -->
+                            <!-- You can use a div tag as well. -->
+                            <textarea name="content" id="formContent"><?= $one[0]['content']; ?></textarea>
+
+                            <!-- Include Editor JS files. -->
+                            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+
+                            <!-- Initialize the editor. -->
+                            <script>
+                                new FroalaEditor('textarea');
+                            </script>
+
                         </div>
                     </form>
                 </div>

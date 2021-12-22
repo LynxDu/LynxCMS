@@ -42,9 +42,9 @@ class PlaginController extends AdminController
                         [
                             'id' => 'NULL',
                             'file_name' => $srcFileName,
-                            'path' => $FilePath,
+                            'path' => $newFilePath,
                             'active' => 'included',
-                            'description' => 'NULL'
+                            'description' => $FilePath
                         ]
                     )
                     ->sql();
