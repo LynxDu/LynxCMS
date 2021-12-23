@@ -86,6 +86,7 @@ class PlaginController extends AdminController
 
                 endforeach;
         }
+        header('Location: /lynxcms/admin/plagins/');
 
     }
 

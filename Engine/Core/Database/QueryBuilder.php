@@ -120,6 +120,7 @@ class QueryBuilder
                 if (next($data)) {
                     $this->sql['set'] .= ", ";
                 }
+
                 $this->values[]    = $value;
             }
         }

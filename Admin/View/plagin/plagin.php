@@ -37,10 +37,7 @@ function selectPlaginList()
         </div>
         <div class="row">
             <div class="col">
-                <form action="/lynxcms/admin/plagins/" method="post" enctype="multipart/form-data" name="formPlagin">
-                    <input type="file" name="attachment">
-                    <input type="submit" value="Отправить файл">
-                </form>
+
                 <form class="form-horizontal" method="post" action="/lynxcms/admin/plagins/">
                 <iframe id="hiddenframe" name="hiddenframe" style="width:0px;height:0px;border:0px"></iframe>
                 <table id="othdetails" class="table table-hover borderbottom">
@@ -82,7 +79,8 @@ function selectPlaginList()
                         <td><textarea name="dform_oth_details_descr[]" class="form-control" rows="3" placeholder="Имя файла"><?= $list['file_name']?></textarea></td>
                         <td><textarea name="dform_oth_details_descr[]" class="form-control" rows="3" placeholder="Описание плагина"><?= $list['description']?></textarea></td>
                         <td style="vertical-align:middle;text-align:right;">
-                            <input class="form-check-input" type="checkbox" name="<?= $list['id']?>">
+                            <input class="btn-check" type="checkbox" id="btn-check" autocomplete="off" name="<?= $list['id']?>">
+                            <label class="btn btn-primary" for="btn-check">Select</label>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -102,6 +100,12 @@ function selectPlaginList()
                         </td>
                     </tbody>
                 </table>
+                </form>
+                <form action="/lynxcms/admin/plagins/" method="post" enctype="multipart/form-data" name="formPlagin">
+
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="attachment" style="width: 30%">
+                    <input type="submit" value="Отправить файл" class="btn btn-primary btn-sm" style="margin-top: 10px;">
+
                 </form>
             </div>
         </div>

@@ -1,18 +1,24 @@
 <?php
 namespace Admin\Model\Setting;
 
+use Engine\Core\Database\Connection;
+use Engine\Core\Database\QueryBuilder;
 use Engine\Model;
 
 class SettingRepository extends Model
 {
     public function getSettings()
     {
-        $sql = $this->queryBuilder->select()
+        $queryBuilder = new QueryBuilder();
+        $db = new Connection();
+
+
+        $sql = $queryBuilder->select()
             ->from('setting')
             ->orderBy('id', 'ASC')
             ->sql();
 
-        return $this->db->query($sql);
+        return $db->query($sql);
     }
 
     /**
@@ -21,27 +27,40 @@ class SettingRepository extends Model
      */
     public function getSettingValue($keyField)
     {
-        $sql = $this->queryBuilder->select('value')
+        $queryBuilder = new QueryBuilder();
+        $db = new Connection();
+
+        $sql = $queryBuilder->select('value')
             ->from('setting')
             ->where('key_field', $keyField)
             ->sql();
 
-        $query = $this->db->query($sql, $this->queryBuilder->values);
+        $query = $db->query($sql, $this->queryBuilder->values);
 
         return isset($query[0]) ? $query[0]->value : null;
     }
 
     public function update(array $params)
     {
+        $queryBuilder = new QueryBuilder();
+        $db = new Connection();
+
         if (!empty($params)) {
             foreach ($params as $key => $value) {
-                $sql = $this->queryBuilder
+                $sql = $queryBuilder
                     ->update('setting')
                     ->set(['value' => $value])
-                    ->where('key_field', $key)
+                    ->where('id', $key)
                     ->sql();
 
-                $this->db->execute($sql, $this->queryBuilder->values);
+
+
+                print_r($sql);
+                print_r($queryBuilder->values);
+
+
+
+                $db->execute($sql, $queryBuilder->values);
             }
         }
     }

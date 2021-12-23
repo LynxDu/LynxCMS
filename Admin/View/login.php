@@ -11,7 +11,7 @@
     <title>Login to CMS</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../Assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Assets/css/mdb.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../Assets/css/login.css" rel="stylesheet">
@@ -40,7 +40,14 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
 
-</div> <!-- /container -->
+</div>
+
+
+
+
+
+
+<!-- /container -->
 
 
 <!-- Bootstrap core JavaScript

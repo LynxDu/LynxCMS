@@ -67,14 +67,10 @@ function selectPage()
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Contact</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
             <li><a href="admin/" class="text-white">Email me</a></li>
           </ul>
         </div>
@@ -96,18 +92,7 @@ function selectPage()
 
 <main>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
-      </div>
-    </div>
-  </section>
+
 
   <div class="album py-5 bg-light">
     <div class="container">
@@ -116,24 +101,19 @@ function selectPage()
 <!--          -->
           <?php
           $query = selectPage();
+          $f = 0;
           foreach($query as $page): ?>
-        <div class="col">
-          <div class="card shadow-lg">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title></title><rect width="100%" height="100%" ="5" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><?= $page['title'] ?></text></svg>
-
-            <div class="card-body">
-              <p class="card-text"><?= $page['content'] ?></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted"><?= $page['date'] ?></small>
+            <div class="card border border-dark mb-3" style="max-width: 18rem;margin-right: 5px;">
+                  <div class="card-header"><?= $page['title'] ?></div>
+                  <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="card-text">
+                          <?= $page['content'] ?>
+                      </p>
+                  </div>
+                  <div class="card-footer text-muted"><?= $page['date'] ?></div>
               </div>
-            </div>
-          </div>
-        </div>
-          <?php endforeach; ?>
+          <?php  endforeach; ?>
 <!--          -->
       </div>
     </div>

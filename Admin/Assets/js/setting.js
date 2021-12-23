@@ -2,8 +2,8 @@ var setting = {
     ajaxMethod: 'POST',
 
     updates: function() {
-        var formData = $('#formSetting').serialize();
-        console.log(formData);
+        let formData = $('#formSetting').serialize();
+        //console.log(formData);
         $.ajax({
             url: '/lynxcms/admin/settings/update/',
             type: this.ajaxMethod,
@@ -13,7 +13,7 @@ var setting = {
             },
             success: function(result){
                 console.log(result);
-                //window.location = '/lynxcms/admin/settings/general/';
+                window.location = '/lynxcms/admin/settings/general/';
             }
         });
     }

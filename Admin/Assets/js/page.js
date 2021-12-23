@@ -43,7 +43,7 @@ var page = {
             },
             success: function(result){
                 console.log(result);
-                //window.location = '/lynxcms/admin/pages/edit/' + result;
+                window.location = '/lynxcms/admin/pages/' + result;
             }
         });
     }

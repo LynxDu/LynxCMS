@@ -46,14 +46,14 @@ $settings = selectPage(); ?>
                                         <?= $setting['name'] ?>
                                     </label>
                                     <div class="col-10">
-                                        <input class="form-control" type="text" name="<?= $setting['key_field'] ?>" value="<?= $setting['value'] ?>" id="formNameSite">
+                                        <input class="form-control" type="text" name="<?= $setting['id'] ?>" value="<?= $setting['value'] ?>" id="formNameSite">
                                     </div>
                                 </div>
                                 <?php } ?>
 
                         <?php endforeach; ?>
 
-                        <button type="submit" class="btn btn-primary" onclick="setting.updates()">Save changes</button>
+                        <button type="submit" class="btn btn-primary" onclick="setting.updates(); return false;">Save changes</button>
                     </form>
                 </div>
             </div>

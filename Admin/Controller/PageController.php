@@ -40,6 +40,8 @@ class PageController extends AdminController
         $this->data['pages'] = $repositiry->getPageData($id);
 
         $this->view->render('pages/edit', $this->data);
+
+//        header('Location: /lynxcms/admin/pages/');
     }
 
     public function add()

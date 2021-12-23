@@ -1,0 +1,5 @@
+git status
+git add .
+git push
+git commit -m "load_22.12.21"
+git init
