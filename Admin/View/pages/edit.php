@@ -2,14 +2,14 @@
 use Admin\Model\Page\PageRepositiry;
 use Engine\Core\Database\Connection;
 use Engine\Core\Database\QueryBuilder;
-function selectOnePage()
+function selectOnePage($id)
 {
     $queryBuilder = new QueryBuilder();
     $db = new Connection();
     $sql = $queryBuilder
         ->select()
         ->from('page')
-        //->where('id', $id)
+        ->where('id', $id)
         ->sql();
     $query= $db->query($sql, $queryBuilder->values);
     //print_r($query);
@@ -24,17 +24,17 @@ $this->theme->header(); ?>
                     <h3><?php $url = $_SERVER["REQUEST_URI"];?>
                         <?php $id = basename($url, '');?>
                         <?php $one = selectOnePage($id);?>
-                        <?php $oneId = count($one)-1;?>
-                        <?= $one[$oneId]['title']; ?> </h3>
+
+                        <?= $one[0]['title']; ?> </h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-9">
                     <form id="formPage">
-                        <input type="hidden" name="page_id" id="formPageId" value="<?= $one[$oneId]['id']; ?>" />
+                        <input type="hidden" name="page_id" id="formPageId" value="<?= $one[0]['id']; ?>" />
                         <div class="form-group">
                             <label for="formTitle">Title</label>
-                            <input type="text" name="title" class="form-control" id="formTitle" value="<?= $one[$oneId]['title']; ?>" placeholder="Title page...">
+                            <input type="text" name="title" class="form-control" id="formTitle" value="<?= $one[0]['title']; ?>" placeholder="Title page...">
                         </div>
                         <div class="form-group">
                             <label for="formContent">Content</label>
@@ -44,7 +44,7 @@ $this->theme->header(); ?>
 
                             <!-- Create a tag that we will use as the editable area. -->
                             <!-- You can use a div tag as well. -->
-                            <textarea name="content" id="formContent"><?= $one[$oneId]['content']; ?></textarea>
+                            <textarea name="content" id="formContent"><?= $one[0]['content']; ?></textarea>
 
                             <!-- Include Editor JS files. -->
                             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
